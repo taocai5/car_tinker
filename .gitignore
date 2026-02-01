@@ -1,0 +1,120 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Logs
+*.log
+log/
+
+# IDE settings
+.idea/
+.idea*/
+.vscode/
+.goland/
+
+# Data
+data/
+
+# User specific folders
+scripts/
+notebooks/
+goland/
+
+# Project specific - 项目特定文件
+# 配置文件（可能包含敏感信息）
+config.json
+test_params.json
+test_config.json
+temp_params.json
+
+# 测试目录
+test/
+
+# 副本文件和目录
+* copy.*
+* copy/
+
+# 构建产物副本
+dist copy/
+build copy/
+
+# Python 源代码目录（如果需要忽略）
+python/
+
+# 图标文件（如果需要忽略）
+ico/
+
+# 临时文件
+temp.py
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# 项目特定构建文件
+标定可视化工具.spec
+SetupUserHostSSH.spec
+CleanDocker.spec
+CreateRemoteDocker.spec
+InstallCursorTool.spec
