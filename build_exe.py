@@ -12,6 +12,17 @@ logger = logging.getLogger(__name__)
 def build_exe():
     """编译为EXE文件"""
     try:
+        # 尝试从配置文件读取应用信息
+        sys.path.append(os.getcwd())
+        from config.config import APP_NAME, VERSION
+        exe_name = f"{APP_NAME}_v{VERSION}"
+        logger.info(f"读取到配置: 名称={APP_NAME}, 版本={VERSION}")
+        logger.info(f"构建目标名称: {exe_name}")
+    except Exception as e:
+        exe_name = "标定可视化工具"
+        logger.warning(f"读取配置失败: {e}，使用默认名称: {exe_name}")
+
+    try:
         # 检查PyInstaller是否安装
         try:
             import PyInstaller
@@ -52,13 +63,14 @@ def build_exe():
             "pyinstaller",
             "--onefile",
             # 移除了 --windowed 参数以保留控制台窗口
-            "--name=标定可视化工具",
+            f"--name={exe_name}",
             "--add-data=config.json;.",
             "--add-data=data_path.py;.",
             "--add-data=ssh_manager.py;.",
             "--add-data=file_editor.py;.",
             "--add-data=ui.py;.",
             "--add-data=side_selector.py;.",
+            "--add-data=config;config",  # 添加config包
             "--hidden-import=paramiko",
             "--hidden-import=tkinter",
             "--hidden-import=json",
@@ -121,9 +133,9 @@ def build_exe():
                     shutil.copy2("config.json", config_dist_path)
 
             logger.info(f"\n编译完成！")
-            logger.info(f"EXE文件位置: {os.path.abspath(os.path.join(dist_dir, '标定可视化工具.exe'))}")
+            logger.info(f"EXE文件位置: {os.path.abspath(os.path.join(dist_dir, f'{exe_name}.exe'))}")
             logger.info("\n使用说明:")
-            logger.info("1. 运行 '标定可视化工具.exe'")
+            logger.info(f"1. 运行 '{exe_name}.exe'")
             logger.info("2. 程序将显示控制台窗口用于调试信息")
             logger.info("3. 可以修改同目录下的 config.json 来添加更多车型")
             logger.info("4. 可以修改同目录下的 data_path.py 来调整路径和密码配置")
